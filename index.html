@@ -11,7 +11,6 @@
       --secondary: #01a7c2;
       --text: #1f2933;
       --muted: #52606d;
-      --bg: #f5f7fa;
       --white: #ffffff;
       --border: #d9e2ec;
       --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
@@ -26,17 +25,42 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      background: url("assets/background.jpg") no-repeat center center fixed;
+      background-size: cover;
       color: var(--text);
       line-height: 1.6;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.92) 18%,
+        rgba(255, 255, 255, 0.82) 38%,
+        rgba(255, 255, 255, 0.55) 65%,
+        rgba(255, 255, 255, 0.25) 100%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
     }
 
     header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: rgba(11, 79, 108, 0.82);
       color: var(--white);
       padding: 40px 20px;
       text-align: center;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     header h1 {
@@ -75,18 +99,20 @@
     }
 
     .card {
-      background: var(--white);
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(217, 226, 236, 0.95);
       border-radius: var(--radius);
       padding: 24px;
-      box-shadow: var(--shadow);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
       width: 360px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16);
     }
 
     .card-icon {
@@ -125,49 +151,53 @@
     }
 
     footer {
-      background: #102a43;
+      background: rgba(16, 42, 67, 0.88);
       color: #d9e2ec;
       text-align: center;
       padding: 20px;
       margin-top: 50px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
   </style>
 </head>
 <body>
+  <div class="page-wrapper">
 
-  <header>
-    <h1>ReloGene Training Portal</h1>
-    <p>
-      A centralized hub for training presentations, scripts, and workflows.
-    </p>
-  </header>
+    <header>
+      <h1>ReloGene Training Portal</h1>
+      <p>
+        A centralized hub for training presentations, scripts, and workflows.
+      </p>
+    </header>
 
-  <main class="container">
-    <h2 class="section-title">Training Modules</h2>
-    <p class="section-subtitle">Currently available module</p>
+    <main class="container">
+      <h2 class="section-title">Training Modules</h2>
+      <p class="section-subtitle">Currently available module</p>
 
-    <div class="grid">
-      <div class="card">
-        <div class="card-icon">🧬</div>
-        <h3>Bulk RNA-seq Analysis</h3>
-        <p>
-          End-to-end RNA-seq pipeline including QC, alignment,
-          differential expression, and enrichment analysis.
-        </p>
-        <ul>
-          <li>Scripts</li>
-          <li>PPTs</li>
-          <li>Workflow notes</li>
-        </ul>
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">🧬</div>
+          <h3>Bulk RNA-seq Analysis</h3>
+          <p>
+            End-to-end RNA-seq pipeline including QC, alignment,
+            differential expression, and enrichment analysis.
+          </p>
+          <ul>
+            <li>Scripts</li>
+            <li>PPTs</li>
+            <li>Workflow notes</li>
+          </ul>
 
-        <a href="bulk-rnaseq.html" class="card-link">Open module →</a>
+          <a href="bulk-rnaseq.html" class="card-link">Open module →</a>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <footer>
-    <p>© 2026 ReloGene Bioinformatics Pvt. Ltd.</p>
-  </footer>
+    <footer>
+      <p>© 2026 ReloGene Bioinformatics Pvt. Ltd.</p>
+    </footer>
 
+  </div>
 </body>
 </html>
