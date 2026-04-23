@@ -3,92 +3,249 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bioinformatics Training | Bulk RNA-seq</title>
-
+  <title>Bioinformatics Training Portal</title>
+  <meta name="description" content="Training materials, scripts, presentations, and workflows for bulk RNA-seq analysis." />
   <style>
     :root {
       --primary: #0b4f6c;
       --secondary: #01a7c2;
-      --bg: #f5f7fa;
-      --white: #ffffff;
+      --accent: #e8f7fb;
       --text: #1f2933;
       --muted: #52606d;
+      --bg: #f5f7fa;
+      --white: #ffffff;
       --border: #d9e2ec;
-      --shadow: 0 6px 20px rgba(0,0,0,0.08);
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
     header {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 30px 20px;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    .subtitle {
-      margin-top: 8px;
-      color: #e0f7fa;
-    }
-
-    main {
-      padding: 40px 20px;
-    }
-
-    .section {
-      margin-bottom: 30px;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
+      color: var(--white);
+      padding: 28px 20px;
       box-shadow: var(--shadow);
     }
 
-    .card h2 {
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 0.3px;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--white);
+      font-weight: 600;
+      opacity: 0.95;
+      transition: opacity 0.2s ease;
+    }
+
+    nav a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .hero {
+      padding: 56px 20px 40px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #eef7fb;
+      font-size: 1.05rem;
+    }
+
+    main {
+      padding: 40px 20px 60px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 28px;
+      max-width: 850px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 420px));
+      gap: 22px;
+      margin-top: 24px;
+      justify-content: center;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
       color: var(--primary);
       margin-bottom: 10px;
+      font-size: 1.2rem;
     }
 
     .card p {
       color: var(--muted);
+      font-size: 0.97rem;
+      margin-bottom: 18px;
     }
 
-    .links a {
-      display: block;
-      margin: 10px 0;
-      color: var(--secondary);
+    .card ul {
+      padding-left: 18px;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .card ul li {
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: auto;
       font-weight: bold;
-      text-decoration: none;
+      color: var(--secondary);
     }
 
-    .links a:hover {
-      text-decoration: underline;
+    .info-section {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    .info-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-box h2 {
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+    }
+
+    .info-box p,
+    .info-box li {
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .info-box ul {
+      padding-left: 18px;
+      margin-top: 10px;
     }
 
     footer {
       background: #102a43;
       color: #d9e2ec;
+      padding: 24px 20px;
+      margin-top: 50px;
+    }
+
+    footer p {
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .info-section {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .hero {
+        text-align: left;
+      }
+
+      .hero p {
+        margin: 0;
+      }
     }
   </style>
 </head>
@@ -96,76 +253,86 @@
 
   <header>
     <div class="container">
-      <h1>Bioinformatics Training Portal</h1>
-      <p class="subtitle">Bulk RNA-seq Analysis Module</p>
+      <div class="topbar">
+        <div class="logo">Bioinformatics Training Portal</div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="#modules">Training Modules</a>
+          <a href="#resources">Resources</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+
+      <div class="hero">
+        <h1>Training Materials for Bioinformatics Analysis</h1>
+        <p>
+          A centralized hub for training presentations, scripts, workflows, and learning resources.
+          The portal currently features Bulk RNA-seq analysis and can be expanded with additional
+          modalities over time.
+        </p>
+      </div>
     </div>
   </header>
 
   <main class="container">
+    <section id="modules">
+      <h2 class="section-title">Training Modules</h2>
+      <p class="section-subtitle">
+        Explore the currently available training module. Each module page can contain slide decks,
+        scripts, SOPs, example datasets, and workflow notes tailored to a specific bioinformatics area.
+      </p>
 
-    <div class="section">
-      <div class="card">
-        <h2>Overview</h2>
-        <p>
-          This module covers the complete Bulk RNA-seq analysis pipeline,
-          including quality control, alignment, quantification, differential expression,
-          and downstream functional analysis.
-        </p>
+      <div class="grid">
+        <a href="bulk-rnaseq.html" class="card">
+          <div>
+            <div class="card-icon">🧬</div>
+            <h3>Bulk RNA-seq Analysis</h3>
+            <p>
+              Training resources for quality control, alignment, quantification,
+              differential expression analysis, enrichment analysis, and interpretation.
+            </p>
+            <ul>
+              <li>Scripts</li>
+              <li>PPTs</li>
+              <li>Workflow notes</li>
+            </ul>
+          </div>
+          <span class="card-link">Open module →</span>
+        </a>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <div class="card">
-        <h2>Topics Covered</h2>
+    <section class="info-section" id="resources">
+      <div class="info-box">
+        <h2>What this portal contains</h2>
+        <p>
+          This training portal is intended to provide organized access to company training material.
+          The current module focuses on Bulk RNA-seq analysis and can include:
+        </p>
         <ul>
-          <li>Raw data quality control (FastQC)</li>
-          <li>Read trimming (Trimmomatic / fastp)</li>
-          <li>Alignment (STAR / HISAT2)</li>
-          <li>Quantification (featureCounts / Salmon)</li>
-          <li>Differential expression (DESeq2 / limma)</li>
-          <li>Functional enrichment (GO / KEGG / GSEA)</li>
+          <li>Downloadable PowerPoint slide decks</li>
+          <li>R, Python, or shell scripts</li>
+          <li>Standard workflows and SOP-style notes</li>
+          <li>Example datasets and practice material</li>
+          <li>Recommended software and setup instructions</li>
         </ul>
       </div>
-    </div>
 
-    <div class="section">
-      <div class="card">
-        <h2>Training Materials</h2>
-        <div class="links">
-          <a href="assets/bulk-rnaseq/bulk_rnaseq_training.pdf" target="_blank">
-            📄 Download Training Slides
-          </a>
-
-          <a href="assets/bulk-rnaseq/differential_expression.R" target="_blank">
-            🧬 DEG Analysis Script (R)
-          </a>
-
-          <a href="assets/bulk-rnaseq/qc_pipeline.sh" target="_blank">
-            ⚙️ QC & Preprocessing Pipeline
-          </a>
-
-          <a href="assets/bulk-rnaseq/workflow_notes.pdf" target="_blank">
-            📘 Workflow Notes / SOP
-          </a>
-        </div>
+      <div class="info-box">
+        <h2>Recommended next additions</h2>
+        <ul>
+          <li>Create the <code>bulk-rnaseq.html</code> module page</li>
+          <li>Add folders for scripts, PPTs, and PDFs</li>
+          <li>Link downloadable files from the module page</li>
+          <li>Add your company logo and brand colors</li>
+          <li>Expand later with more modalities if needed</li>
+        </ul>
       </div>
-    </div>
-
-    <div class="section">
-      <div class="card">
-        <h2>How to Use</h2>
-        <p>
-          Start with the training slides for conceptual understanding, then follow the
-          pipeline scripts step-by-step. Use the workflow notes as a reference for best practices
-          and interpretation of results.
-        </p>
-      </div>
-    </div>
-
+    </section>
   </main>
 
   <footer>
-    <p>© 2026 Your Bioinformatics Company | Training Portal</p>
+    <p>© 2026 Your Bioinformatics Company | Training Material Portal</p>
   </footer>
 
 </body>
