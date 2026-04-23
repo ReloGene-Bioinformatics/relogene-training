@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bulk RNA-seq Module | ReloGene</title>
+
+  <style>
+    :root {
+      --primary: #0b4f6c;
+      --secondary: #01a7c2;
+      --text: #1f2933;
+      --muted: #52606d;
+      --white: rgba(255,255,255,0.92);
+      --border: rgba(217,226,236,0.9);
+      --shadow: 0 8px 24px rgba(15,23,42,0.12);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url("assets/background.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.75);
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #0b3d5c;
+    }
+
+    header p {
+      color: #2c5c75;
+      margin-top: 10px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .section {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .section h2 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      color: var(--muted);
+    }
+
+    .steps {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    .steps li {
+      margin-bottom: 8px;
+    }
+
+    .links a {
+      display: block;
+      margin-top: 10px;
+      color: var(--secondary);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background: rgba(1,167,194,0.25);
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      color: #0b3d5c;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <header>
+    <h1>Bulk RNA-seq Analysis</h1>
+    <p>Complete training module for RNA-seq data analysis pipeline</p>
+  </header>
+
+  <div class="container">
+
+    <a href="index.html" class="back">← Back to Home</a>
+
+    <!-- Overview -->
+    <div class="section">
+      <h2>Overview</h2>
+      <p>
+        This module provides a complete workflow for Bulk RNA-seq analysis,
+        from raw sequencing data to biological interpretation.
+      </p>
+    </div>
+
+    <!-- Pipeline -->
+    <div class="section">
+      <h2>Pipeline Steps</h2>
+      <ul class="steps">
+        <li>Quality Control (FastQC)</li>
+        <li>Read Trimming (Trimmomatic)</li>
+        <li>Alignment (STAR)</li>
+        <li>Quantification (featureCounts / HTSeq)</li>
+        <li>Differential Expression (DESeq2)</li>
+        <li>Functional Enrichment (GO / KEGG / GSEA)</li>
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div class="section">
+      <h2>Training Materials</h2>
+      <div class="links">
+
+        <a href="assets/bulk-rnaseq/training_slides.pdf" target="_blank">
+          📄 Download Training Slides
+        </a>
+
+        <a href="assets/bulk-rnaseq/differential_expression.R" target="_blank">
+          🧬 DEG Analysis Script
+        </a>
+
+        <a href="assets/bulk-rnaseq/gsea_pipeline.R" target="_blank">
+          📊 GSEA Pipeline Script
+        </a>
+
+        <a href="assets/bulk-rnaseq/workflow_notes.pdf" target="_blank">
+          📘 Workflow Notes / SOP
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 ReloGene Bioinformatics Pvt. Ltd.
+  </footer>
+
+</div>
+
+</body>
+</html>
