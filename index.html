@@ -13,8 +13,13 @@
   --white:rgba(255,255,255,0.85);
 }
 
-/* GLOBAL */
+/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
+
+html, body {
+  height:100%;
+}
+
 body{
   font-family: Arial, sans-serif;
   background:url("assets/background.jpg") center/cover fixed;
@@ -22,7 +27,7 @@ body{
   overflow-x:hidden;
 }
 
-/* animated overlay */
+/* Animated overlay */
 body::before{
   content:"";
   position:fixed;
@@ -32,13 +37,22 @@ body::before{
     rgba(255,255,255,0.6) 50%,
     rgba(255,255,255,0.3) 100%);
   animation: moveBg 12s ease infinite alternate;
+  z-index:0;
 }
+
 @keyframes moveBg{
   0%{background-position:left;}
   100%{background-position:right;}
 }
 
-.wrapper{position:relative;z-index:1}
+/* WRAPPER (FIXED) */
+.wrapper{
+  position:relative;
+  z-index:1;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
 
 /* HEADER */
 header{
@@ -58,13 +72,15 @@ header p{
   color:#2c5c75;
 }
 
-/* CARD */
+/* MAIN CONTENT */
 .container{
   display:flex;
   justify-content:center;
   margin-top:40px;
+  flex:1; /* pushes footer down */
 }
 
+/* CARD */
 .card{
   background:var(--white);
   backdrop-filter: blur(12px);
@@ -113,16 +129,22 @@ header p{
   to{opacity:1;transform:translateY(0);}
 }
 
+/* FOOTER (FIXED) */
 footer{
-  margin-top:80px;
+  margin-top:auto;
   padding:20px;
   text-align:center;
   background:rgba(1,167,194,0.2);
+  border-top:1px solid rgba(0,0,0,0.05);
+  color:#0b3d5c;
+  font-weight:600;
 }
+
 </style>
 </head>
 
 <body>
+
 <div class="wrapper">
 
 <header>
@@ -145,5 +167,6 @@ footer{
 </footer>
 
 </div>
+
 </body>
 </html>
