@@ -1,172 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ReloGene Training Portal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bioinformatics Training Portal</title>
 
-<style>
-:root {
-  --primary:#0b4f6c;
-  --secondary:#01a7c2;
-  --text:#1f2933;
-  --white:rgba(255,255,255,0.85);
-}
+  <style>
+    :root {
+      --primary: #0b4f6c;
+      --secondary: #01a7c2;
+      --text: #1f2933;
+      --muted: #52606d;
+      --white: rgba(255, 255, 255, 0.92);
+      --border: rgba(217, 226, 236, 0.9);
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+      --radius: 16px;
+    }
 
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-html, body {
-  height:100%;
-}
+    html, body {
+      min-height: 100%;
+    }
 
-body{
-  font-family: Arial, sans-serif;
-  background:url("assets/background.jpg") center/cover fixed;
-  color:var(--text);
-  overflow-x:hidden;
-}
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
 
-/* Animated overlay */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:linear-gradient(120deg,
-    rgba(255,255,255,0.85) 20%,
-    rgba(255,255,255,0.6) 50%,
-    rgba(255,255,255,0.3) 100%);
-  animation: moveBg 12s ease infinite alternate;
-  z-index:0;
-}
+      /* Background Image */
+      background-image: url("assets/background.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
 
-@keyframes moveBg{
-  0%{background-position:left;}
-  100%{background-position:right;}
-}
+      position: relative;
+    }
 
-/* WRAPPER (FIXED) */
-.wrapper{
-  position:relative;
-  z-index:1;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-}
+    /* Light overlay for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(255,255,255,0.9) 20%,
+        rgba(255,255,255,0.7) 45%,
+        rgba(255,255,255,0.4) 75%,
+        rgba(255,255,255,0.2) 100%
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
 
-/* HEADER */
-header{
-  text-align:center;
-  padding:90px 20px 40px;
-  animation:fadeUp 1s ease forwards;
-}
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-header h1{
-  font-size:2.8rem;
-  color:#0b3d5c;
-  text-shadow:0 3px 10px rgba(255,255,255,0.6);
-}
+    /* HEADER (no banner) */
+    header {
+      background: transparent;
+      padding: 70px 20px 30px;
+      text-align: center;
+    }
 
-header p{
-  margin-top:10px;
-  color:#2c5c75;
-}
+    header h1 {
+      font-size: 2.6rem;
+      margin-bottom: 12px;
+      color: #0b3d5c;
+      font-weight: 700;
+      text-shadow: 0 2px 6px rgba(255,255,255,0.6);
+    }
 
-/* MAIN CONTENT */
-.container{
-  display:flex;
-  justify-content:center;
-  margin-top:40px;
-  flex:1; /* pushes footer down */
-}
+    header p {
+      max-width: 700px;
+      margin: auto;
+      color: #2c5c75;
+      font-size: 1.05rem;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.5);
+    }
 
-/* CARD */
-.card{
-  background:var(--white);
-  backdrop-filter: blur(12px);
-  padding:30px;
-  border-radius:18px;
-  width:380px;
-  box-shadow:0 20px 50px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
-  transform-style: preserve-3d;
-}
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      flex: 1;
+    }
 
-.card:hover{
-  transform: rotateY(6deg) rotateX(6deg) scale(1.03);
-}
+    .section-title {
+      font-size: 1.9rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+      text-align: center;
+    }
 
-.card h3{
-  color:var(--primary);
-  margin-bottom:12px;
-}
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
 
-.card p{
-  color:#52606d;
-  margin-bottom:15px;
-}
+    .grid {
+      display: flex;
+      justify-content: center;
+    }
 
-/* BUTTON */
-.card-link{
-  display:inline-block;
-  padding:10px 18px;
-  border-radius:10px;
-  background:linear-gradient(45deg,#01a7c2,#0b4f6c);
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  transition: all 0.3s;
-}
+    /* Card with glass effect */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      width: 360px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
 
-.card-link:hover{
-  box-shadow:0 0 15px rgba(1,167,194,0.7);
-  transform:translateY(-2px);
-}
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
+    }
 
-/* ANIMATION */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
-}
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
 
-/* FOOTER (FIXED) */
-footer{
-  margin-top:auto;
-  padding:20px;
-  text-align:center;
-  background:rgba(1,167,194,0.2);
-  border-top:1px solid rgba(0,0,0,0.05);
-  color:#0b3d5c;
-  font-weight:600;
-}
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
 
-</style>
+    .card p {
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .card ul {
+      padding-left: 18px;
+      margin-bottom: 15px;
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: var(--secondary);
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .card-link:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      background: rgba(1, 167, 194, 0.2); /* light blue transparent */
+      color: #0b3d5c;
+      text-align: center;
+      padding: 18px;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+  </style>
 </head>
-
 <body>
 
-<div class="wrapper">
+  <div class="page-wrapper">
 
-<header>
-  <h1>ReloGene Training Portal</h1>
-  <p>A centralized hub for training presentations, scripts, and workflows.</p>
-</header>
+    <header>
+      <h1>ReloGene Training Portal</h1>
+      <p>
+        A centralized hub for training presentations, scripts, and workflows.
+      </p>
+    </header>
 
-<div class="container">
-  <div class="card">
-    <h3>Bulk RNA-seq Analysis 🧬</h3>
-    <p>End-to-end RNA-seq pipeline including QC, alignment,
-    differential expression, and enrichment analysis.</p>
+    <main class="container">
+      <h2 class="section-title">Training Modules</h2>
+      <p class="section-subtitle">Currently available module</p>
 
-    <a href="bulk-rnaseq.html" class="card-link">Open module →</a>
+      <div class="grid">
+        <div class="card">
+          <h3>Bulk RNA-seq Analysis 🧬</h3>
+          <p>
+            End-to-end RNA-seq pipeline including QC, alignment,
+            differential expression, and enrichment analysis.
+          </p>
+
+          <a href="bulk-rnaseq.html" class="card-link">Open module →</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2026 ReloGene Bioinformatics Pvt. Ltd.</p>
+    </footer>
+
   </div>
-</div>
-
-<footer>
-© 2026 ReloGene Bioinformatics Pvt. Ltd.
-</footer>
-
-</div>
 
 </body>
 </html>
