@@ -4,75 +4,402 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ReloGene Training Portal</title>
+  <meta name="description" content="Training materials, scripts, presentations, and workflows." />
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --primary: #0b4f6c;
+      --secondary: #01a7c2;
+      --accent: #e8f7fb;
+      --text: #1f2933;
+      --muted: #52606d;
+      --bg: #f5f7fa;
+      --white: #ffffff;
+      --border: #d9e2ec;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background: #f7f9fc;
-      color: #222;
     }
-    header {
-      background: #0b3d91;
-      color: white;
-      padding: 24px 40px;
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
-    nav a {
-      color: white;
-      margin-right: 20px;
+
+    a {
       text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--white);
+      padding: 28px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
       font-weight: bold;
+      letter-spacing: 0.3px;
     }
-    main {
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 0 20px;
+
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
     }
-    .card {
-      background: white;
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      margin-bottom: 24px;
+
+    nav a {
+      color: var(--white);
+      font-weight: 600;
+      opacity: 0.95;
+      transition: opacity 0.2s ease;
     }
-    footer {
+
+    nav a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .hero {
+      padding: 56px 20px 40px;
       text-align: center;
-      padding: 20px;
-      color: #666;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #eef7fb;
+      font-size: 1.05rem;
+    }
+
+    main {
+      padding: 40px 20px 60px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 28px;
+      max-width: 850px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.97rem;
+      margin-bottom: 18px;
+    }
+
+    .card ul {
+      padding-left: 18px;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .card ul li {
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: auto;
+      font-weight: bold;
+      color: var(--secondary);
+    }
+
+    .info-section {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    .info-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-box h2 {
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+    }
+
+    .info-box p,
+    .info-box li {
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .info-box ul {
+      padding-left: 18px;
+      margin-top: 10px;
+    }
+
+    footer {
+      background: #102a43;
+      color: #d9e2ec;
+      padding: 24px 20px;
+      margin-top: 50px;
+    }
+
+    footer p {
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .info-section {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .hero {
+        text-align: left;
+      }
+
+      .hero p {
+        margin: 0;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>ReloGene Training Portal</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="onboarding.html">Onboarding</a>
-      <a href="tutorials.html">Tutorials</a>
-      <a href="sops.html">SOPs</a>
-      <a href="faq.html">FAQ</a>
-    </nav>
+    <div class="container">
+      <div class="topbar">
+        <div class="logo">ReloGene Training Portal</div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="#modules">Training Modules</a>
+          <a href="#resources">Resources</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+
+      <div class="hero">
+        <h1>Training Materials for Bioinformatics Modalities</h1>
+        <p>
+          A centralized hub for training presentations, scripts, workflows, and learning resources
+          across key bioinformatics domains including RNA-seq, single-cell analysis, spatial omics,
+          genomics, and machine learning.
+        </p>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <div class="card">
-      <h2>Welcome</h2>
-      <p>This portal contains company training materials, tutorials, SOPs, and onboarding resources.</p>
-    </div>
+  <main class="container">
+    <section id="modules">
+      <h2 class="section-title">Training Modules</h2>
+      <p class="section-subtitle">
+        Explore training materials by modality. Each section can contain slide decks, scripts,
+        SOPs, example datasets, and workflow notes tailored to a specific bioinformatics area.
+      </p>
 
-    <div class="card">
-      <h2>Featured Sections</h2>
-      <ul>
-        <li>New staff onboarding</li>
-        <li>System and platform tutorials</li>
-        <li>Standard operating procedures</li>
-        <li>Frequently asked questions</li>
-      </ul>
-    </div>
+      <div class="grid">
+        <a href="bulk-rnaseq.html" class="card">
+          <div>
+            <div class="card-icon">🧬</div>
+            <h3>Bulk RNA-seq</h3>
+            <p>Training resources for QC, alignment, quantification, differential expression, and enrichment analysis.</p>
+            <ul>
+              <li>Scripts</li>
+              <li>PPTs</li>
+              <li>Workflow notes</li>
+            </ul>
+          </div>
+          <span class="card-link">Open module →</span>
+        </a>
+
+        <a href="scrnaseq.html" class="card">
+          <div>
+            <div class="card-icon">🔬</div>
+            <h3>Single-cell RNA-seq</h3>
+            <p>Materials covering preprocessing, clustering, annotation, marker genes, and downstream interpretation.</p>
+            <ul>
+              <li>Seurat / Scanpy guides</li>
+              <li>Training decks</li>
+              <li>Example analysis scripts</li>
+            </ul>
+          </div>
+          <span class="card-link">Open module →</span>
+        </a>
+
+        <a href="spatial-omics.html" class="card">
+          <div>
+            <div class="card-icon">🗺️</div>
+            <h3>Spatial Omics</h3>
+            <p>Resources for spatial transcriptomics workflows, integration, visualization, and biological interpretation.</p>
+            <ul>
+              <li>Spatial workflows</li>
+              <li>PPTs</li>
+              <li>Analysis examples</li>
+            </ul>
+          </div>
+          <span class="card-link">Open module →</span>
+        </a>
+
+        <a href="variant-calling.html" class="card">
+          <div>
+            <div class="card-icon">🧪</div>
+            <h3>Variant Calling</h3>
+            <p>Training content for alignment, BAM processing, SNP/indel calling, annotation, and reporting.</p>
+            <ul>
+              <li>Pipeline scripts</li>
+              <li>PPT presentations</li>
+              <li>Best-practice notes</li>
+            </ul>
+          </div>
+          <span class="card-link">Open module →</span>
+        </a>
+
+        <a href="microarray.html" class="card">
+          <div>
+            <div class="card-icon">📊</div>
+            <h3>Microarray Analysis</h3>
+            <p>Training materials for preprocessing, normalization, DEG analysis, enrichment, and visualization.</p>
+            <ul>
+              <li>R scripts</li>
+              <li>Slides</li>
+              <li>Example outputs</li>
+            </ul>
+          </div>
+          <span class="card-link">Open module →</span>
+        </a>
+
+        <a href="machine-learning.html" class="card">
+          <div>
+            <div class="card-icon">🤖</div>
+            <h3>Machine Learning in Bioinformatics</h3>
+            <p>Learning resources for predictive modeling, feature selection, classification, and AI-based workflows.</p>
+            <ul>
+              <li>Python notebooks</li>
+              <li>Training decks</li>
+              <li>Use-case examples</li>
+            </ul>
+          </div>
+          <span class="card-link">Open module →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="info-section" id="resources">
+      <div class="info-box">
+        <h2>What this portal contains</h2>
+        <p>
+          This training portal is intended to provide organized access to company training material
+          across different bioinformatics modalities. Each module page can be expanded to include:
+        </p>
+        <ul>
+          <li>Downloadable PowerPoint slide decks</li>
+          <li>R, Python, or shell scripts</li>
+          <li>Standard workflows and SOP-style notes</li>
+          <li>Example datasets and practice material</li>
+          <li>Recommended software and setup instructions</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h2>Recommended next additions</h2>
+        <ul>
+          <li>Add one dedicated HTML page per modality</li>
+          <li>Create folders for scripts, PPTs, and PDFs</li>
+          <li>Link downloadable files from each module page</li>
+          <li>Add your company logo and brand colors</li>
+          <li>Connect the site to a custom domain later</li>
+        </ul>
+      </div>
+    </section>
   </main>
 
   <footer>
-    © 2026 ReloGene Bioinformatics Pvt. Ltd
+    <p>© 2026 ReloGene Bioinformatics Pvt. Ltd. | Training Material Portal</p>
   </footer>
+
 </body>
 </html>
