@@ -1,184 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bulk RNA-seq Module | ReloGene</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bulk RNA-seq | ReloGene</title>
 
-  <style>
-    :root {
-      --primary: #0b4f6c;
-      --secondary: #01a7c2;
-      --text: #1f2933;
-      --muted: #52606d;
-      --white: rgba(255,255,255,0.92);
-      --border: rgba(217,226,236,0.9);
-      --shadow: 0 8px 24px rgba(15,23,42,0.12);
-      --radius: 14px;
-    }
+<style>
+:root {
+  --primary:#0b4f6c;
+  --secondary:#01a7c2;
+  --white:rgba(255,255,255,0.9);
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+body{
+  font-family:Arial;
+  background:url("assets/background.jpg") center/cover fixed;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: url("assets/background.jpg") no-repeat center center fixed;
-      background-size: cover;
-      color: var(--text);
-      line-height: 1.6;
-    }
+/* overlay */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,0.8);
+}
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(255,255,255,0.75);
-      z-index: 0;
-    }
+/* layout */
+.wrapper{position:relative;z-index:1;}
 
-    .wrapper {
-      position: relative;
-      z-index: 1;
-    }
+header{
+  text-align:center;
+  padding:70px 20px;
+}
 
-    header {
-      text-align: center;
-      padding: 60px 20px 30px;
-    }
+header h1{
+  font-size:2.5rem;
+  color:#0b3d5c;
+}
 
-    header h1 {
-      font-size: 2.5rem;
-      color: #0b3d5c;
-    }
+.container{
+  max-width:900px;
+  margin:auto;
+}
 
-    header p {
-      color: #2c5c75;
-      margin-top: 10px;
-    }
+/* cards */
+.section{
+  background:var(--white);
+  padding:25px;
+  margin:20px;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
+.section:hover{
+  transform:translateY(-5px);
+}
 
-    .section {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow);
-    }
+/* timeline */
+.steps{
+  list-style:none;
+  padding-left:0;
+}
 
-    .section h2 {
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
+.steps li{
+  position:relative;
+  padding-left:25px;
+  margin-bottom:12px;
+}
 
-    .section p {
-      color: var(--muted);
-    }
+.steps li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:6px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--secondary);
+}
 
-    .steps {
-      margin-top: 10px;
-      padding-left: 20px;
-    }
+/* buttons */
+.link-btn{
+  display:block;
+  margin-top:12px;
+  padding:10px;
+  border-radius:10px;
+  text-align:center;
+  background:linear-gradient(45deg,#01a7c2,#0b4f6c);
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-    .steps li {
-      margin-bottom: 8px;
-    }
+.link-btn:hover{
+  box-shadow:0 0 15px rgba(1,167,194,0.7);
+}
 
-    .links a {
-      display: block;
-      margin-top: 10px;
-      color: var(--secondary);
-      font-weight: bold;
-      text-decoration: none;
-    }
+/* back */
+.back{
+  display:inline-block;
+  margin:20px;
+  color:var(--secondary);
+  font-weight:bold;
+  text-decoration:none;
+}
 
-    .links a:hover {
-      text-decoration: underline;
-    }
-
-    .back {
-      display: inline-block;
-      margin-bottom: 20px;
-      color: var(--secondary);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer {
-      background: rgba(1,167,194,0.25);
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-      color: #0b3d5c;
-    }
-
-  </style>
+footer{
+  text-align:center;
+  padding:20px;
+  background:rgba(1,167,194,0.2);
+}
+</style>
 </head>
-<body>
 
+<body>
 <div class="wrapper">
 
-  <header>
-    <h1>Bulk RNA-seq Analysis</h1>
-    <p>Complete training module for RNA-seq data analysis pipeline</p>
-  </header>
+<header>
+  <h1>Bulk RNA-seq Analysis</h1>
+  <p>Complete training module for RNA-seq pipeline</p>
+</header>
 
-  <div class="container">
+<div class="container">
 
-    <a href="index.html" class="back">← Back to Home</a>
+<a href="index.html" class="back">← Back</a>
 
-    <!-- Overview -->
-    <div class="section">
-      <h2>Overview</h2>
-      <p>
-        This module provides a complete workflow for Bulk RNA-seq analysis,
-        from raw sequencing data to biological interpretation.
-      </p>
-    </div>
+<div class="section">
+<h2>Overview</h2>
+<p>This module provides a complete workflow from raw data to biological insights.</p>
+</div>
 
-    <!-- Pipeline -->
-    <div class="section">
-      <h2>Pipeline Steps</h2>
-      <ul class="steps">
-        <li>Quality Control</li>
-        <li>Read Trimming</li>
-        <li>Alignment</li>
-        <li>Quantification</li>
-        <li>Differential Expression</li>
-        <li>Functional Enrichment</li>
-      </ul>
-    </div>
+<div class="section">
+<h2>Pipeline Steps</h2>
+<ul class="steps">
+<li>Quality Control</li>
+<li>Read Trimming</li>
+<li>Alignment</li>
+<li>Quantification</li>
+<li>Differential Expression</li>
+<li>Functional Enrichment</li>
+</ul>
+</div>
 
-    <!-- Resources -->
-    <div class="section">
-      <h2>Training Materials</h2>
-      <div class="links">
+<div class="section">
+<h2>Training Materials</h2>
 
-        <a href="assets/bulk-rnaseq/training_slides.pdf" target="_blank">
-          📄 Download Training Slides & Handout
-        </a>
+<a href="assets/bulk-rnaseq/training_slides.pdf" class="link-btn">
+📄 Download Slides
+</a>
 
-        <a href="assets/bulk-rnaseq/bulk-rnaseq-scripts.zip" class="card-link">
-          📦 Download All Scripts
-        </a>
-
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    © 2026 ReloGene Bioinformatics Pvt. Ltd.
-  </footer>
+<a href="assets/bulk-rnaseq/bulk-rnaseq-scripts.zip" class="link-btn">
+📦 Download Scripts
+</a>
 
 </div>
 
+</div>
+
+<footer>
+© 2026 ReloGene Bioinformatics Pvt. Ltd.
+</footer>
+
+</div>
 </body>
 </html>
