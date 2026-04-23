@@ -11,9 +11,9 @@
       --secondary: #01a7c2;
       --text: #1f2933;
       --muted: #52606d;
-      --white: #ffffff;
-      --border: #d9e2ec;
-      --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --white: rgba(255, 255, 255, 0.92);
+      --border: rgba(217, 226, 236, 0.9);
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
       --radius: 16px;
     }
 
@@ -23,65 +23,81 @@
       padding: 0;
     }
 
+    html, body {
+      min-height: 100%;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: url("assets/background.jpg") no-repeat center center fixed;
-      background-size: cover;
       color: var(--text);
       line-height: 1.6;
+
+      /* Background Image */
+      background-image: url("assets/background.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+
       position: relative;
     }
 
+    /* Light overlay for readability */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       background: linear-gradient(
         to right,
-        rgba(255, 255, 255, 0.92) 18%,
-        rgba(255, 255, 255, 0.82) 38%,
-        rgba(255, 255, 255, 0.55) 65%,
-        rgba(255, 255, 255, 0.25) 100%
+        rgba(255,255,255,0.9) 20%,
+        rgba(255,255,255,0.7) 45%,
+        rgba(255,255,255,0.4) 75%,
+        rgba(255,255,255,0.2) 100%
       );
-      pointer-events: none;
       z-index: 0;
+      pointer-events: none;
     }
 
     .page-wrapper {
       position: relative;
       z-index: 1;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
+    /* HEADER (no banner) */
     header {
-      background: rgba(11, 79, 108, 0.82);
-      color: var(--white);
-      padding: 40px 20px;
+      background: transparent;
+      padding: 70px 20px 30px;
       text-align: center;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
     }
 
     header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
+      font-size: 2.6rem;
+      margin-bottom: 12px;
+      color: #0b3d5c;
+      font-weight: 700;
+      text-shadow: 0 2px 6px rgba(255,255,255,0.6);
     }
 
     header p {
-      color: #eef7fb;
       max-width: 700px;
       margin: auto;
+      color: #2c5c75;
+      font-size: 1.05rem;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.5);
     }
 
     .container {
       max-width: 900px;
       margin: auto;
       padding: 40px 20px;
+      flex: 1;
     }
 
     .section-title {
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       margin-bottom: 10px;
       color: var(--primary);
       text-align: center;
@@ -98,21 +114,22 @@
       justify-content: center;
     }
 
+    /* Card with glass effect */
     .card {
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(217, 226, 236, 0.95);
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 24px;
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+      box-shadow: var(--shadow);
       width: 360px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
     }
 
     .card-icon {
@@ -151,17 +168,16 @@
     }
 
     footer {
-      background: rgba(16, 42, 67, 0.88);
-      color: #d9e2ec;
       text-align: center;
       padding: 20px;
-      margin-top: 50px;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      color: #23465d;
+      font-weight: 600;
     }
+
   </style>
 </head>
 <body>
+
   <div class="page-wrapper">
 
     <header>
@@ -199,5 +215,6 @@
     </footer>
 
   </div>
+
 </body>
 </html>
