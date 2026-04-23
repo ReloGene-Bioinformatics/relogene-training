@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bioinformatics Training Portal</title>
+  <title>ReloGene Training Portal</title>
 
   <style>
     :root {
@@ -39,15 +39,25 @@
       box-shadow: var(--shadow);
     }
 
-    header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
+    .header-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
     }
 
-    header p {
+    .logo-inline {
+      width: 45px;
+      height: auto;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+    }
+
+    .subtitle {
+      margin-top: 10px;
       color: #eef7fb;
-      max-width: 700px;
-      margin: auto;
     }
 
     .container {
@@ -136,8 +146,11 @@
 <body>
 
   <header>
-    <h1>ReloGene Training Portal</h1>
-    <p>
+    <div class="header-title">
+      <img src="assets/logo.png" alt="Company Logo" class="logo-inline" />
+      <h1>Bioinformatics Training Portal</h1>
+    </div>
+    <p class="subtitle">
       A centralized hub for training presentations, scripts, and workflows.
     </p>
   </header>
@@ -166,7 +179,7 @@
   </main>
 
   <footer>
-    <p>© 2026 ReloGene Bioinformatics Pvt. Ltd.</p>
+    <p>© 2026 ReloGene Bioinformatics Pvt. Ltd</p>
   </footer>
 
 </body>
