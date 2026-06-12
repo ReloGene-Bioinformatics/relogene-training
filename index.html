@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>.feature-card::before{pointer-events:none;}</style>
 </head>
 <body>
 
@@ -58,11 +59,13 @@
           <p class="lead" style="margin-top:18px">Hands-on, reproducible modules you can follow end to end. More are on the way.</p>
         </div>
         <div class="card-grid">
-          <article class="feature-card reveal">
+          <article class="feature-card reveal" style="display:flex;flex-direction:column">
             <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-9M20 16v-3"/></svg></div>
             <h3>Bulk RNA-seq Analysis</h3>
             <p>End-to-end RNA-seq pipeline: QC, alignment, quantification, differential expression, and functional enrichment.</p>
-            <div class="more"><p><a href="bulk-rnaseq.html" style="color:var(--crimson);font-weight:600">Open module →</a></p></div>
+            <a href="bulk-rnaseq.html" class="btn btn-primary" style="margin-top:18px;align-self:flex-start;position:relative;z-index:2">Open module
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
           </article>
           <article class="feature-card reveal reveal-delay-1" style="opacity:0.85">
             <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
