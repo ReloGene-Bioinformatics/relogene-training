@@ -1,0 +1,47 @@
+# =============================================================================
+# environment.yaml — Conda Environment for Bulk RNA-seq Pipeline
+# =============================================================================
+# Creates a self-contained environment with all tools required by Snakefile.
+#
+# Usage:
+#   # Create the environment (first time):
+#   conda env create -f environment.yaml
+#
+#   # Activate before running the pipeline:
+#   conda activate rnaseq_pipeline
+#
+#   # Update an existing environment if this file changes:
+#   conda env update -f environment.yaml --prune
+# =============================================================================
+
+name: rnaseq_pipeline
+
+channels:
+  - bioconda        # primary source for bioinformatics tools
+  - conda-forge     # community-maintained packages (dependency resolver)
+  - defaults        # Anaconda defaults (fallback)
+
+dependencies:
+  # ── Workflow manager ────────────────────────────────────────────────────────
+  - snakemake>=7.0          # pipeline orchestration
+
+  # ── Quality control ─────────────────────────────────────────────────────────
+  - fastqc>=0.11.9          # per-read quality metrics
+  - multiqc>=1.14           # aggregate QC report
+
+  # ── Adapter & quality trimming ──────────────────────────────────────────────
+  - trimmomatic>=0.39       # adapter removal and quality trimming
+
+  # ── Alignment ───────────────────────────────────────────────────────────────
+  - hisat2>=2.2.1           # splice-aware RNA-seq aligner
+
+  # ── BAM processing ──────────────────────────────────────────────────────────
+  - samtools>=1.16          # BAM manipulation, flagstat, indexing
+
+  # ── Read counting ───────────────────────────────────────────────────────────
+  - htseq>=2.0              # gene-level read counting (htseq-count)
+
+  # ── Python dependencies (used by HTSeq and Snakemake) ───────────────────────
+  - python>=3.9
+  - numpy
+  - pandas
